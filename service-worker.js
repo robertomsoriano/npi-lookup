@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https//robertomsoriano.github.io/npi-lookup/precache-manifest.2ab83485a4c04eb3fa37cbc3ef86b528.js"
+  "/npi-lookup/precache-manifest.3da9417b10dd28fb572fa2395ac36196.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("https//robertomsoriano.github.io/npi-lookup/index.html", {
+workbox.routing.registerNavigationRoute("/npi-lookup/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

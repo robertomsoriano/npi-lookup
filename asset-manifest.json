@@ -1,13 +1,13 @@
 {
-  "main.css": "https//robertomsoriano.github.io/npi-lookup/static/css/main.10b01859.chunk.css",
-  "main.js": "https//robertomsoriano.github.io/npi-lookup/static/js/main.298b4b69.chunk.js",
-  "main.js.map": "https//robertomsoriano.github.io/npi-lookup/static/js/main.298b4b69.chunk.js.map",
-  "runtime~main.js": "https//robertomsoriano.github.io/npi-lookup/static/js/runtime~main.dd4d977d.js",
-  "runtime~main.js.map": "https//robertomsoriano.github.io/npi-lookup/static/js/runtime~main.dd4d977d.js.map",
-  "static/js/2.aaa5e7ac.chunk.js": "https//robertomsoriano.github.io/npi-lookup/static/js/2.aaa5e7ac.chunk.js",
-  "static/js/2.aaa5e7ac.chunk.js.map": "https//robertomsoriano.github.io/npi-lookup/static/js/2.aaa5e7ac.chunk.js.map",
-  "index.html": "https//robertomsoriano.github.io/npi-lookup/index.html",
-  "precache-manifest.2ab83485a4c04eb3fa37cbc3ef86b528.js": "https//robertomsoriano.github.io/npi-lookup/precache-manifest.2ab83485a4c04eb3fa37cbc3ef86b528.js",
-  "service-worker.js": "https//robertomsoriano.github.io/npi-lookup/service-worker.js",
-  "static/css/main.10b01859.chunk.css.map": "https//robertomsoriano.github.io/npi-lookup/static/css/main.10b01859.chunk.css.map"
+  "main.css": "/npi-lookup/static/css/main.10b01859.chunk.css",
+  "main.js": "/npi-lookup/static/js/main.de200c17.chunk.js",
+  "main.js.map": "/npi-lookup/static/js/main.de200c17.chunk.js.map",
+  "runtime~main.js": "/npi-lookup/static/js/runtime~main.12fcde94.js",
+  "runtime~main.js.map": "/npi-lookup/static/js/runtime~main.12fcde94.js.map",
+  "static/js/2.aaa5e7ac.chunk.js": "/npi-lookup/static/js/2.aaa5e7ac.chunk.js",
+  "static/js/2.aaa5e7ac.chunk.js.map": "/npi-lookup/static/js/2.aaa5e7ac.chunk.js.map",
+  "index.html": "/npi-lookup/index.html",
+  "precache-manifest.3da9417b10dd28fb572fa2395ac36196.js": "/npi-lookup/precache-manifest.3da9417b10dd28fb572fa2395ac36196.js",
+  "service-worker.js": "/npi-lookup/service-worker.js",
+  "static/css/main.10b01859.chunk.css.map": "/npi-lookup/static/css/main.10b01859.chunk.css.map"
 }
