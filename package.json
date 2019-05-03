@@ -8,8 +8,10 @@
     "gh-pages": "^2.0.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.5",
-    "reactstrap": "^7.1.0"
+    "reactstrap": "^7.1.0",
+    "tabletop": "^1.5.2"
   },
   "homepage": "https://robertomsoriano.github.io/npi-lookup",
   "scripts": {
