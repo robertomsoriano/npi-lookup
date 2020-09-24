@@ -64,7 +64,7 @@ export default class NewPOA extends Component {
         <hr />
 
         <form
-          onSubmit={e => {
+          onSubmit={(e) => {
             e.preventDefault();
             this.validate();
           }}
@@ -77,7 +77,7 @@ export default class NewPOA extends Component {
               value={this.state.value}
               onChange={this.handleChange}
               placeholder="Enter Dx code Here"
-              id="icd10"
+              id="new-poa"
             />
           </ListGroupItem>
           <br />
@@ -100,7 +100,7 @@ export default class NewPOA extends Component {
   }
 }
 
-const Results = props => {
+const Results = (props) => {
   const name = props.result.loading ? "" : props.result.loaded.toString();
   const valid =
     props.result.loading === true ? "" : props.result.valid ? "" : "NOT";
