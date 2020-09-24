@@ -11,7 +11,8 @@ import NPIForm from "./components/NPI/NPIForm";
 export default class App extends Component {
   render() {
     return (
-      <Router basename={process.env.PUBLIC_URL}>
+      // <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Switch>
           <Fragment>
             <div className="App">
