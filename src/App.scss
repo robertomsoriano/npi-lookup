@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #ece9e6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffffff,
+    #ece9e6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #ece9e6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+// NavBar
+.active-link {
+  font-weight: 700;
+}
+
+
+.heading {
+  text-align: center;
+}
+
+.form-body-i {
+  background: #ece9e6; /* fallback for old browsers */
+  width: 60%;
+  min-width: 400px;
+  margin: 5px auto;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between !important;
+}
+.form-input {
+  background: #ece9e6; /* fallback for old browsers */
+}
+#container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.heading {
+  display: inline-block;
+  color: darkgray;
+  font-family: "Coiny", "bold";
+}
+strong {
+  font-weight: 400;
+  font-size: 15px;
+}

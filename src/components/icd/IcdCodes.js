@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import NavBar from "./NavBar";
+import NavBar from "../NavBar";
 
-import IcdApi from "./icd/IcdApi";
+import IcdApi from "./IcdApi";
 
 export default class IcdCodes extends Component {
   render() {

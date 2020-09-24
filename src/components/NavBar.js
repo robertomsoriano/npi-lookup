@@ -33,13 +33,17 @@ export default class Example extends React.Component {
       <div>
         <Navbar color="light" light expand="md">
           <NavbarBrand tag={Link} to="/">
-            One-Stop
+            <img
+              src={`https://robertomsoriano.github.io/npi-lookup/static/media/onestop.2c47db2f.png`}
+              alt={`One Stop`}
+              style={{ width: 100, marginTop: -7 }}
+            />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink tag={Link} to="/npi/">
+                <NavLink tag={Link} to="/">
                   NPI
                 </NavLink>
               </NavItem>
