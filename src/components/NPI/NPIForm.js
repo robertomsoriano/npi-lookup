@@ -9,6 +9,33 @@ const NPIForm = () => {
   const [provNPI, setProvNPI] = useState("");
   const [provider, setProvider] = useState({});
   const [loading, setLoading] = useState(false);
+  const formattedProv = (provider) => {
+    // if (provider.data) {
+    //   if (provider.data.results) {
+    return {
+      provName: provider.data.results[0].basic.organization_name
+        ? provider.data.results[0].basic.organization_name
+        : provider.data.results[0].basic.name,
+      provOtherName: provider.data.results[0].other_names[0].organization_name
+        ? provider.data.results[0].other_names[0].organization_name
+        : null,
+      provAddress: provider.data.results[0].addresses
+        .filter(onlyUnique)
+        .map(
+          (add, idx) =>
+            `${add.address_1}, ${add.city}, ${
+              add.state
+            }, ${add.postal_code.slice(0, 5)}`
+        ),
+      provNPI: provider.data.results[0].number,
+      provType: provider.data.results[0].basic.organization_name
+        ? `Facility `
+        : `Provider `
+    };
+    //   }
+    // }
+  };
+
   useEffect(() => {}, []);
   console.log(provider);
 
@@ -21,6 +48,21 @@ const NPIForm = () => {
       setLoading(false);
     });
   };
+
+  const copyProvInfo = (nameToUse) => {
+    let textField = document.createElement("textarea");
+    textField.innerText = `NPI: ${
+      provider.data.results[0].number
+    }/ ${nameToUse}, ${formattedProv(provider).provAddress}`;
+    document.body.appendChild(textField);
+    textField.style.fontWeight = "400";
+    textField.select();
+    document.execCommand("copy");
+    textField.remove();
+    return;
+  };
+
+  // If errors on search
   if (provider.data && provider.data.Errors) {
     return (
       <Suspense fallback={<Spinner color="dark" />}>
@@ -124,36 +166,59 @@ const NPIForm = () => {
                       : `Provider`}{" "}
                     Name:
                   </strong>{" "}
-                  {provider.data.results[0].basic.organization_name
-                    ? provider.data.results[0].basic.organization_name
-                    : provider.data.results[0].basic.name}
+                  {formattedProv(provider).provName}
+                  <Button
+                    outline
+                    size={`sm`}
+                    className={`my-0`}
+                    value={`df`}
+                    onClick={() => {
+                      copyProvInfo(formattedProv(provider).provName);
+                    }}
+                    data-toggle="popover"
+                    title="Copy info using this provider name"
+                  >
+                    Copy Info
+                  </Button>
                 </ListGroupItem>
-                {provider.data.results[0].other_names[0] && (
+                {formattedProv(provider).provOtherName && (
                   <ListGroupItem className="form-body-i">
                     <strong>Other Names: </strong>{" "}
-                    {provider.data.results[0].other_names[0].organization_name}
+                    {formattedProv(provider).provOtherName}
+                    <Button
+                      outline
+                      size={`sm`}
+                      className={`my-0`}
+                      value={`df`}
+                      onClick={() => {
+                        copyProvInfo(formattedProv(provider).provOtherName);
+                      }}
+                      data-toggle="popover"
+                      title="Copy info using this provider name"
+                    >
+                      Copy Info
+                    </Button>
                   </ListGroupItem>
                 )}
 
                 <ListGroupItem className="form-body-i">
-                  <strong>
-                    {provider.data.results[0].basic.organization_name
-                      ? `Facility `
-                      : `Provider `}{" "}
-                    NPI:
-                  </strong>{" "}
+                  <strong>{formattedProv(provider).provType} NPI:</strong>{" "}
                   {provider.data.results[0].number}
                 </ListGroupItem>
-
-                <ListGroupItem className="form-body-i">
-                  <strong>
-                    {provider.data.results[0].basic.organization_name
-                      ? `Facility `
-                      : `Office `}{" "}
-                    Address:
-                  </strong>{" "}
-                  {`${provider.data.results[0].addresses[0].address_1}, ${provider.data.results[0].addresses[0].city}, ${provider.data.results[0].addresses[0].state}`}
-                </ListGroupItem>
+                {provider.data.results[0].addresses
+                  .filter(onlyUnique)
+                  .map((add, idx) => (
+                    <>
+                      <ListGroupItem key={idx} className="form-body-i">
+                        <strong>
+                          {formattedProv(provider).provType} Address:
+                        </strong>{" "}
+                        {`${add.address_1}, ${add.city}, ${
+                          add.state
+                        }, ${add.postal_code.slice(0, 5)}`}
+                      </ListGroupItem>
+                    </>
+                  ))}
 
                 {provider.data.results[0].taxonomies.map((tax, idx) => (
                   <>
@@ -173,12 +238,14 @@ const NPIForm = () => {
 export default NPIForm;
 
 // Helper Functions
+
+// Validate NPI entered
 const validateNPI = (provNPI) => {
   const regex = /\d{10,}[a-z]*/;
   const valid = regex.test(provNPI);
   return valid ? true : false;
 };
-
+// Make API with NPI entered
 async function fetchProv(provNPI) {
   try {
     validateNPI(provNPI);
@@ -194,4 +261,8 @@ async function fetchProv(provNPI) {
     alert(`NPI invalid or not found`);
     console.log(error);
   }
+}
+// Don't show the Mailing address
+function onlyUnique(value, index, self) {
+  return value.address_purpose === "MAILING";
 }
