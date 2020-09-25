@@ -8,13 +8,18 @@ import NavBar from "../NavBar";
 const NPIForm = () => {
   const [provNPI, setProvNPI] = useState("");
   const [provider, setProvider] = useState({});
+  const [loading, setLoading] = useState(false);
   useEffect(() => {}, []);
   console.log(provider);
 
   const searchNPI = async (e) => {
     e.preventDefault();
+    setLoading(true);
     // fetchProv(NPIValue).then((res) => setProvider(res));
-    fetchProv(provNPI).then((res) => setProvider(res));
+    fetchProv(provNPI).then((res) => {
+      setProvider(res);
+      setLoading(false);
+    });
   };
   if (provider.data && provider.data.Errors) {
     return (
@@ -26,7 +31,7 @@ const NPIForm = () => {
         <div className="container form-body" style={{ display: "flex-center" }}>
           <>
             <form>
-              <ListGroup>
+              <ListGroup className={`mb-4`}>
                 <ListGroupItem className="form-body-i">
                   <Input
                     className="form-input"
@@ -38,7 +43,9 @@ const NPIForm = () => {
                   />
                 </ListGroupItem>
               </ListGroup>
+
               <Button
+                className={`mt-2`}
                 outline
                 color="primary"
                 type="submit"
@@ -49,6 +56,13 @@ const NPIForm = () => {
               </Button>
             </form>
           </>
+          {loading && (
+            <>
+              <div className={`my-4`}>
+                <Spinner color="dark" />
+              </div>
+            </>
+          )}
           <div className={`my-5`}>
             <h2>Provider not found. Please verify NPI.</h2>
             <p>{provider.data.Errors[0].description}</p>
@@ -81,6 +95,7 @@ const NPIForm = () => {
               </ListGroupItem>
             </ListGroup>
             <Button
+              className={`mt-2`}
               outline
               color="primary"
               type="submit"
@@ -91,6 +106,13 @@ const NPIForm = () => {
             </Button>
           </form>
         </>
+        {loading && (
+          <>
+            <div className={`my-4`}>
+              <Spinner color="dark" />
+            </div>
+          </>
+        )}
         {provider.data && provider.data.results && (
           <>
             <div className={`my-2`}>
