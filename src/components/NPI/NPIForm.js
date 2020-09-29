@@ -16,9 +16,10 @@ const NPIForm = () => {
       provName: provider.data.results[0].basic.organization_name
         ? provider.data.results[0].basic.organization_name
         : provider.data.results[0].basic.name,
-      provOtherName: provider.data.results[0].other_names[0].organization_name
-        ? provider.data.results[0].other_names[0].organization_name
-        : null,
+      provOtherName:
+        provider.data.results[0].other_names.length > 0
+          ? provider.data.results[0].other_names[0].organization_name
+          : null,
       provAddress: provider.data.results[0].addresses
         .filter(onlyUnique)
         .map(
@@ -181,7 +182,7 @@ const NPIForm = () => {
                     Copy Info
                   </Button>
                 </ListGroupItem>
-                {formattedProv(provider).provOtherName && (
+                {formattedProv(provider).provOtherName !== null && (
                   <ListGroupItem className="form-body-i">
                     <strong>Other Names: </strong>{" "}
                     {formattedProv(provider).provOtherName}
